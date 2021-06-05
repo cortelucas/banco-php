@@ -17,6 +17,7 @@ class Conta
     {
         $this->cpfTitular = $cpfTitular;
         $this->nomeTitular = $nomeTitular;
+        $this->validaNomeTitular($nomeTitular);
         $this->saldo = $saldo;
     }
 
@@ -95,5 +96,13 @@ class Conta
         }
         $this->sacar($valorTransferir);
         $contaDestino->depositar($valorTransferir);
+    }
+
+    private function validaNomeTitular(string $nomeTitular)
+    {
+        if (strlen($nomeTitular) < 5) {
+            echo "Nome deve ter ao menos 5 caracteres";
+            exit();
+        }
     }
 }
